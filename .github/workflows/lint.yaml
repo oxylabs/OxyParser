@@ -1,0 +1,25 @@
+name: Code Quality
+on: [pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.12"
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install poetry
+        poetry install
+
+    - name: Lint code
+      run: |
+        poetry run ruff check .
+        poetry run isort --check .
+        poetry run mypy .
+        poetry run pytest .
