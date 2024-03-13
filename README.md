@@ -11,11 +11,11 @@
     </a>
 </h4>
 
-OxyParser does the heavy lifting of parsing HTMLs for you. It uses Pydantic models to describe the structure of the HTML and then automatically parses the HTMLs into the Pydantic models.:
+Oxy® Parser does the heavy lifting of parsing HTMLs for you. It uses Pydantic models to describe the structure of the HTML and then automatically parses the HTMLs into the Pydantic models.:
 - Describe a Pydantic model of your expected HTML structure
-- Pass the URL or HTML to OxyParser together with the Pydantic model
-- OxyParser will parse the HTML and return the parsed data as Pydantic models
-- OxyParser will also cache the selectors for later re-use, so you don't need to call OpenAI's API every time you want to parse the same HTML
+- Pass the URL or HTML to Oxy® Parser together with the Pydantic model
+- Oxy® Parser will parse the HTML and return the parsed data as Pydantic models
+- Oxy® Parser will also cache the selectors for later re-use, so you don't need to call OpenAI's API every time you want to parse the same HTML
 
 Supported cache backends:
 - Memory
@@ -46,7 +46,7 @@ You will need to setup an `.env` file with the following variables:
 
 `LLM_MODEL`: The model you want to use. (See LiteLLM docs above for full info on supported LLMs)
 
-Scraper keys: they're optional, but if not provided, you will need to scrape and pass the HTMLs to OxyParser yourself.
+Scraper keys: they're optional, but if not provided, you will need to scrape and pass the HTMLs to Oxy® Parser yourself.
 However, we highly suggest to use Oxylabs scraper since it will remove the hassle of getting HTMLs and will also
 provide you with a lot of other benefits like rotating IPs, handling captchas, bypassing blocks.
 
