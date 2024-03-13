@@ -17,23 +17,14 @@ OxyParser does the heavy lifting of parsing HTMLs for you. It uses Pydantic mode
 - OxyParser will parse the HTML and return the parsed data as Pydantic models
 - OxyParser will also cache the selectors for later re-use, so you don't need to call OpenAI's API every time you want to parse the same HTML
 
+Supported cache backends:
+- Memory
+- File
+- Redis
 
-```mermaid
-flowchart TD
-    A[Describe Your Model] -->|pass to OxyParser| C{Start Parsing}
-    C -->|URL passed| D[Scrape the URL]
-    C -->|HTML passed| E[check cached Selectors]
-    D --> F[get HTML]
-    F --> E
-    E -->|cached Selectors exist?| G[Yes]
-    E -->|cached Selectors exist?| H[No] 
-    G[Parse with Selectors] -->|Required fields got parsed!| I{Yes}
-    I[YES] --> K
-    G[Parse with Selectors] -->|Required fields did not parse.| J[No]
-    J[get Selectors from OpenAI] --> G
-    H --> J
-    K[Save Selectors to cache] --> |Return Result| L[Done]
-```
+## See the flowchart for detailed view
+
+![flowchart.png](resources/flowchart.png)
 
 ## Installation
 
@@ -50,17 +41,28 @@ to see the supported LLMs: https://docs.litellm.ai/docs/providers
 ## Usage
 
 You will need to setup an `.env` file with the following variables:
+
+`LLM_API_KEY`: Can be either OpenAI key, Claude key or any other LLM provider key. (See LiteLLM docs above for full info on supported LLMs)
+
+`LLM_MODEL`: The model you want to use. (See LiteLLM docs above for full info on supported LLMs)
+
+Scraper keys: they're optional, but if not provided, you will need to scrape and pass the HTMLs to OxyParser yourself.
+However, we highly suggest to use Oxylabs scraper since it will remove the hassle of getting HTMLs and will also
+provide you with a lot of other benefits like rotating IPs, handling captchas, bypassing blocks.
+
+Click here to sign up for Oxylabs free trial: https://dashboard.oxylabs.io/en/registration?productToBuy=SCRAPI_WEB
+
+`OXYLABS_SCRAPER_USER`: Your Oxylabs scraper user (optional)
+`OXYLABS_SCRAPER_PASSWORD`: Your Oxylabs scraper password (optional)
+
 ```env
 LLM_API_KEY=your_openai_api_key
+LLM_MODEL=gpt-3.5-turbo
 OXYLABS_SCRAPER_USER=your_oxylabs_scraper_user  # optional
 OXYLABS_SCRAPER_PASSWORD=your_oxylabs_scraper_pass  # optional
 ```
 
-Oxylabs credentials are optional, you can also pass your own HTML.
-However, we highly suggest to use Oxylabs scraper since it will remove the hassle of getting HTMLs and will also
-provide you with a lot of other benefits like rotating IPs, handling captchas, bypassing blocks.
-
-Then you can use the following code to parse the HTML:
+Then you can use the following code to parse the website into structured data:
 
 For full examples see the `examples` directory.
 
@@ -106,12 +108,13 @@ parsed_item = await parser.parse(url=url, model=JobItem, html=html)
 print(job_item)
 ```
 
+## Known Issues
 
-You can rely fully on OxyParser to parse the HTMLs for you. 
-It will cache the selectors for later re-use. So, you only need to get the selectors from OpenAI once.
-You can modify the cache manually if OpenAI fails to parse specific selectors.
+There are know nuances where sometimes the extracted xpath fails to extract some data. 
+For example where description is very long or nested by many elements. In such cases for now we recommend manually
+editing the selectors in cache. These shouldn't be an often case though.
+Create an issue if you encounter any other issues.
 
-Supported cache backends:
-- Memory
-- File
-- Redis
+## Contributing
+
+We welcome all contributions. To contribute - clone the repo, create a new branch, make your changes and create a pull request.
