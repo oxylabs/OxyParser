@@ -4,9 +4,9 @@ import re
 import time
 
 import structlog
+from litellm import acompletion
 from openai import BadRequestError, RateLimitError
 from tenacity import retry, stop_after_attempt, wait_exponential
-from litellm import acompletion
 
 from oxyparser.settings import settings
 
@@ -20,7 +20,7 @@ os.environ["ANTHROPIC_API_KEY"] = settings.LLM_API_KEY
 def extract_json_from_ai_response(response: str) -> dict[str, str]:
     pattern = r"{(.*?)}"
     matched_items = re.findall(pattern, response, re.DOTALL)
-    item = f"".join(matched_items)
+    item = "".join(matched_items)
     return json.loads(f"{{{item}}}") if item else {}
 
 
