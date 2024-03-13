@@ -5,6 +5,23 @@ description = ""
 authors = ["Tadas Gedgaudas <tadas.gedgaudas@oxylabs.io>"]
 readme = "README.md"
 
+
+[project]
+name = "oxyparser"
+description = "Oxy® Parser - Automated HTML Parsing with LLMs!"
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+authors = [
+    { name = "Tadas Gedgaudas", email = "tadas.gedgaudas@oxylabs.io" },
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://oxylabs.io"
+Documentation = "https://github.com/oxylabs/OxyParser/README.md"
+Repository = "https://github.com/oxylabs/OxyParser"
+
 [tool.poetry.dependencies]
 python = "^3.8"
 lxml = "^5.1.0"
@@ -26,10 +43,6 @@ mypy = "~1.9.0"
 isort = "~5.13.2"
 pytest-asyncio = "^0.23.5"
 pytest = "^8.0.2"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
 line-length = 120
@@ -58,3 +71,9 @@ plugins = [
 [tool.poetry.scripts]
 lint = "oxyparser.scripts:lint"
 
+[tool.hatch.version]
+path = "oxyparser/__init__.py"
+
+[build-system]
+requires = ["hatchling >= 1.7.0"]
+build-backend = "hatchling.build"
