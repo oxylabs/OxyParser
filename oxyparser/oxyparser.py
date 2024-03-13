@@ -1,4 +1,4 @@
-from typing import Any, Type, Literal
+from typing import Any, Literal, Type
 
 import structlog
 from pydantic import BaseModel, ValidationError
