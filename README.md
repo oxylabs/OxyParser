@@ -1,5 +1,5 @@
 <h1 align="center">
-        🤖 OxyParser
+        🤖 Oxy® Parser
     </h1>
     <p align="center">
         <p align="center">Parse HTMLs automatically by only describing the Pydantic model.
