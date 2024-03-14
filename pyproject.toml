@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "oxyparser"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["Tadas Gedgaudas <tadas.gedgaudas@oxylabs.io>"]
 readme = "README.md"
@@ -23,7 +23,7 @@ Documentation = "https://github.com/oxylabs/OxyParser/README.md"
 Repository = "https://github.com/oxylabs/OxyParser"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 lxml = "^5.1.0"
 pydantic = "^2.6.3"
 pydantic-settings = "^2.2.1"
