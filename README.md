@@ -81,12 +81,14 @@ class JobItem(BaseModel):
 # if it does, please replace it with a new one
 # https://career.oxylabs.io
 # also if you're a python dev and looking for job, hit us up!
-URL: str = "https://career.oxylabs.io/job/813b9ac5/python-developer-mid-senior/"
+URL: str = "https://career.oxylabs.io/job/4c00bf2b/mid-python-developer/"
+URL2: str = "https://career.oxylabs.io/job/efccbff6/senior-python-developer/"
+URL_CHOICE = [random.choice(URL, URL2)]
 
 
 async def main() -> None:
     parser = OxyParser()
-    job_item = await parser.parse(URL, JobItem)
+    job_item = await parser.parse(URL_CHOICE, JobItem)
     print(job_item)
 
 
