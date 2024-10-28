@@ -67,6 +67,7 @@ Then you can use the following code to parse the website into structured data:
 For full examples see the `examples` directory.
 
 ```python
+import random
 from pydantic import BaseModel
 from oxyparser.oxyparser import OxyParser
 
