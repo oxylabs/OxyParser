@@ -84,7 +84,7 @@ class JobItem(BaseModel):
 # also if you're a python dev and looking for job, hit us up!
 URL: str = "https://career.oxylabs.io/job/4c00bf2b/mid-python-developer/"
 URL2: str = "https://career.oxylabs.io/job/efccbff6/senior-python-developer/"
-URL_CHOICE = [random.choice(URL, URL2)]
+URL_CHOICE = random.choice([URL, URL2])
 
 
 async def main() -> None:
