@@ -13,7 +13,7 @@
     </a>
 </h4>
 
-   [![Oxylabs promo code](https://raw.githubusercontent.com/oxylabs/product-integrations/refs/heads/master/Affiliate-Universal-1090x275.png)](https://oxylabs.go2cloud.org/aff_c?offer_id=7&aff_id=877&url_id=112)
+   [![Oxylabs promo code](https://raw.githubusercontent.com/oxylabs/product-integrations/refs/heads/master/Affiliate-Universal-1090x275.png)]([https://oxylabs.go2cloud.org/aff_c?offer_id=7&aff_id=877&url_id=112](https://oxylabs.io/pages/gitoxy?utm_source=877&utm_medium=affiliate&groupid=877&utm_content=oxyparser-github&transaction_id=102f49063ab94276ae8f116d224b67))
 
 Oxy® Parser does the heavy lifting of parsing HTMLs for you. It uses Pydantic models to describe the structure of the HTML and then automatically parses the HTMLs into the Pydantic models.:
 - Describe a Pydantic model of your expected HTML structure
